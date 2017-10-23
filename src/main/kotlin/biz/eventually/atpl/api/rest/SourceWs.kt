@@ -4,8 +4,8 @@ import biz.eventually.atpl.api.data.domain.Source
 import biz.eventually.atpl.api.service.SourceService
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.web.bind.annotation.GetMapping
+import org.springframework.web.bind.annotation.PathVariable
 import org.springframework.web.bind.annotation.RequestMapping
-import org.springframework.web.bind.annotation.RequestMethod
 import org.springframework.web.bind.annotation.RestController
 
 /**
@@ -21,5 +21,10 @@ class SourceWs {
     @GetMapping("/")
     fun getSources(): List<Source> {
         return service.findAll()
+    }
+
+    @GetMapping(value = "/id/{sourceId}")
+    fun getSource(@PathVariable sourceId : Long) : Source {
+        return service.findById(sourceId)
     }
 }

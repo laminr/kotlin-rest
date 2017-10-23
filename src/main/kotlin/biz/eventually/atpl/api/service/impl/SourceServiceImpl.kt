@@ -15,7 +15,11 @@ class SourceServiceImpl: SourceService {
     @Autowired
     lateinit var repository: SourceRepository
 
-    override fun findAll() : List<Source> {
+    override fun findAll(): List<Source> {
         return repository.findAll()
+    }
+
+    override fun findById(id: Long): Source {
+        return repository.findById(id)
     }
 }
